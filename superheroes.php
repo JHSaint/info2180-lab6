@@ -1,5 +1,8 @@
 <?php
 
+
+$query = $_GET['q'];
+$check = 0;
 $superheroes = [
   [
       "id" => 1,
@@ -65,8 +68,26 @@ $superheroes = [
 
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+
+<?php
+if($query == ''){
+?>
+    <ul>
+    <?php foreach ($superheroes as $superhero): ?>
+        <li><?= $superhero['alias']; ?></li>
+    <?php endforeach; ?>
+    </ul>
+<?php
+}else{
+    foreach ($superheroes as $superhero){
+        if($superhero['alias'] == $query){
+            print "<h3>" . strtoupper($query) . "</h3>";
+            print "<h4>A.K.A " . strtoupper($superhero["name"]) . "</h4>";
+            print "<p>" . $superhero["biography"] . "</p>";
+            $check = 1;
+        }
+    }
+    if($check == 0){
+        print "<h3> Superhero not found </h3>";
+    }
+}

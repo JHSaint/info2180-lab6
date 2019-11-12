@@ -1,6 +1,5 @@
 window.onload = () => {
 
-  //let httpRequest = new XMLHttpRequest();
   const btn = document.getElementById("search");
   const textfield = document.getElementById("field");
   const result = document.getElementById("result");
@@ -8,10 +7,6 @@ window.onload = () => {
   let url = 'superheroes.php';
 
   btn.addEventListener('click', search);
-
-
-
-
 
 
   function search(){

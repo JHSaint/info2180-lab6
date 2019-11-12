@@ -80,8 +80,8 @@ if($query == ''){
 <?php
 }else{
     foreach ($superheroes as $superhero){
-        if($superhero['alias'] == $query){
-            print "<h3>" . strtoupper($query) . "</h3>";
+        if($superhero['alias'] == $query || $superhero['name'] == $query){
+            print "<h3>" . strtoupper($superhero["alias"]) . "</h3>";
             print "<h4>A.K.A " . strtoupper($superhero["name"]) . "</h4>";
             print "<p>" . $superhero["biography"] . "</p>";
             $check = 1;

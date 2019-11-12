@@ -2,6 +2,14 @@
 
 
 $query = $_GET['q'];
+
+//Sanitize
+$query = trim($query);
+$query = stripslashes($query);
+$query = htmlspecialchars($query);
+$query = strtolower($query);
+filter_var($query, FILTER_SANITIZE_STRING);
+
 $check = 0;
 $superheroes = [
   [
@@ -80,7 +88,7 @@ if($query == ''){
 <?php
 }else{
     foreach ($superheroes as $superhero){
-        if($superhero['alias'] == $query || $superhero['name'] == $query){
+        if(strtolower($superhero['alias']) == $query || strtolower($superhero['name']) == $query){
             print "<h3>" . strtoupper($superhero["alias"]) . "</h3>";
             print "<h4>A.K.A " . strtoupper($superhero["name"]) . "</h4>";
             print "<p>" . $superhero["biography"] . "</p>";
